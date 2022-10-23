@@ -1,25 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import ItemListContainer from "./components/ItemListContainer";
+import Navbar from './components/Navbar';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  <>
+    <Navbar/>
+    <ItemListContainer color={"#ddd"} saludo={"Bienvenido, en este sitio encontraras todo lo necesario para hacer tu acuario plantado. Podras consultar las fichas tecnicas de tus plantas, glosario de definiciones, cursos, o cualquier otra informacion que necesites, Tambien podras visitar nuestra tienda online, con las mejores plantas del mercado, a un precio muy accesible. "}/>
+  </>
+  )
 }
-
-export default App;
