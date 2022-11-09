@@ -3,14 +3,23 @@ import Avatar from '@mui/material/Avatar';
 import SpaIcon from '@mui/icons-material/Spa';
 import { AppBar, Button, ButtonGroup, Box } from "@mui/material";
 import Typography from '@mui/material/Typography';
-import { red, green } from '@mui/material/colors';
+import {green } from '@mui/material/colors';
 import CartWidget from "./CartWidget";
 import Logo from "./Logo";
+import {Link} from 'react-router-dom'
+import '../assets/css/navbar.css'
 
+const pages = [
+    { label: "Home", link: "/" },
+    { label: "Checkout", link: "/checkout" },
+    { label: "Contacto", link: "/contacto" },
+    { label: "deportes", link: "/category/deportes" },
+    { label: "fiesta", link: "/category/fiesta" },
+];
 
 export default function Navbar() {
     return (
-        <AppBar position="static" style={{ backgroundColor: "green" }} color="secondary">
+        <AppBar  className="nav" position="static" style={{ backgroundColor: "green" }} color="secondary">
             <Box
                 display="flex"
                 justifyContent="center"
@@ -30,7 +39,6 @@ export default function Navbar() {
                         variant="h6"
                         noWrap
                         component="a"
-                        href="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -44,10 +52,11 @@ export default function Navbar() {
                         PLANTASACUATICAS.COM.AR
                     </Typography>
                 </Box>
-                <Button variant="contained" color="success"><a href="https://plantasacuaticas.com.ar/paginas/plantas.html">Plantas</a></Button>
-                <Button variant="contained" color="success"><a href="https://plantasacuaticas.com.ar/paginas/tienda.html">Tienda</a></Button>
-                <Button variant="contained" color="success"><a href="https://plantasacuaticas.com.ar/paginas/formulario.html">Contacto</a></Button>
-                <Box marginLeft={25}><Button variant="contained" color="success" ><a href=""><CartWidget /></a></Button></Box>
+                <Button variant="contained" color="success"><Link to="/category/fondo">Fondo</Link></Button>
+                <Button variant="contained" color="success"><Link to="/category/flote">Flote</Link></Button>
+                <Button variant="contained" color="success"><Link to="/category/palustre">Palustre</Link></Button>
+                <Button variant="contained" color="success"><Link to="/category/piedra">Piedra</Link></Button>
+                <Box marginLeft={25}><CartWidget/></Box>
             </Box>
         </AppBar>
     );

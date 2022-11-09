@@ -1,0 +1,22 @@
+.footer {
+    border: #00060a solid 3px;
+    background-image: url("https://github.com/nicolascaporaso/plantas-acuaticas/blob/main/imagenes/banner/imagen-principalb.jpg?raw=true");
+    color: rgb(252, 245, 245);
+    text-align: center;
+}
+.footer__div {
+    background-color: rgba(0, 0, 0, 0.562);
+    width: 100%;
+}
+.footer__div__titulo {
+    padding-top: 1px;
+}
+.footer__div__link__ico {
+    margin: 1.5% 1% 2% 1%;
+    background-color: rgba(8, 0, 0, 0.637);
+    width: auto;
+}
+.footer__div__link__ico:hover {
+    color: rgb(252, 245, 245);
+    font-size: 1.5rem;
+}
