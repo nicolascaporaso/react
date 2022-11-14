@@ -1,7 +1,30 @@
 import React from 'react'
+import { useContext } from 'react';
+import { contextoGeneral } from "../components/cartContext.jsx";
+import Item from './item';
+import ItemCarrito from './itemCarrito.jsx';
 
-export default function carrito() {
+
+
+export default function Carrito() {
+    const { carrito, setCarrito } = useContext(contextoGeneral);
+
+    const sumaTotal = () => {
+        let sumaTodo = 0;
+        carrito.forEach(producto => {
+            sumaTodo = sumaTodo + (producto.precio * producto.cantidad);
+        });
+        return sumaTodo;
+    }
+
+    console.log(carrito);
+    
+
     return (
-        <div><h1>Carrito</h1></div>
+            <>{carrito.map((item) => (
+                <ItemCarrito key={item.id} item={item}/>
+            ))}
+            <p> Total ${sumaTotal()}</p>
+            </>
     )
 }

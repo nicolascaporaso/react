@@ -4,13 +4,19 @@ import { productosHC } from '../data/data';
 import Itemcount from './ItemCount';
 import { useState } from 'react';
 
+import { contextoGeneral } from "../components/cartContext.jsx";
+import { useContext } from 'react';
 
 export default function ProductoDetail({ producto }) {
-  const [goCart, setGoCart]= useState(false)
+  const [goCart, setGoCart]= useState(false);
 
   const onAdd = () => {
     setGoCart(true);
   }
+
+  const { nuevoProducto, setNuevoProducto } = useContext(contextoGeneral);
+
+  setNuevoProducto(producto);
 
   return (
     <div className='tienda'>
@@ -25,7 +31,7 @@ export default function ProductoDetail({ producto }) {
             <h4 className='tienda__grid__card__parrafo'>Descripcion: {producto.descripcion}</h4>
             <p className='tienda__grid__card__parrafo'>Stock: {producto.cantidad}</p>
             <div className='link'><Link to={"/producto/" + producto.id}>Comprar</Link></div>
-            {goCart? <Link to='/carrito'>Terminar compra</Link> : <div><Itemcount max={producto.cantidad} min={1} onAdd={onAdd}/></div>}
+            {goCart? <Link to='/carrito'>Terminar Compra</Link> : <div><Itemcount max={producto.cantidad} min={1} onAdd={onAdd}/></div>}
           </div>
         </div>
       </div> 

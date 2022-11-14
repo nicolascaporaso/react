@@ -9,9 +9,11 @@ import FormLabel from '@mui/material/FormLabel'
 import FormHelperText from '@mui/material/FormHelperText'
 import Carrito from './components/Carrito.jsx';
 import Footer from "./components/Footer";
+import ContextContainer from "./components/cartContext.jsx";
 
 export default function App() {
   return (
+    <ContextContainer>
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -22,6 +24,7 @@ export default function App() {
       </Routes>
       <Footer ></Footer>
     </BrowserRouter>
+    </ContextContainer>
   )
 }
 
