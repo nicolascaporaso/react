@@ -1,42 +1,48 @@
+//@ts-check
+
 import React, { useState, createContext } from "react";
 
 export const contextoGeneral = createContext();
 
 export default function CartContext({ children }) {
     const [carrito, setCarrito] = useState([]);
-    const [nuevoProducto, setNuevoProducto] = useState([]);
+    const [quantity, setQuantity] = useState("0");
+    
+    
+    function isInCart(id) { 
+        const existInCart = carrito.findIndex((item) => item.id == id);
+        return existInCart;
+    }
 
-    function addItem() { // agregar cierta cantidad de un ítem al carrito
-        let item = carrito.findIndex((product) => product.id === nuevoProducto.id)
-        if (item == -1) {
-            //no existe
-            nuevoProducto.cantidad= 1;
-            setNuevoProducto(nuevoProducto);
-            setCarrito(carrito.concat(nuevoProducto));
+    function addItem(item, cantidad) { // agregar cierta cantidad de un ítem al carrito
+        console.log("log de add" + quantity);
+        const pos = isInCart(item.id);
+        if (pos == -1) {
+            setCarrito([...carrito, {...item, cantidad}]);
         } else {
-            //sumar a cantidades
-            carrito[item].cantidad = carrito[item].cantidad + 1;
-            setCarrito(carrito);
+            const carritoAux = [...carrito];
+            carritoAux[pos] = { ...carritoAux[pos], cantidad: carritoAux[pos].cantidad + cantidad };
+            setCarrito(carritoAux);
         }
-
     }
 
-    function removeItem(){  // Remover un item del cart por usando su id
-        let item;
-        item = carrito.findIndex((product) => product.id === nuevoProducto.id);
-        carrito.splice(item, 1);
+    function removeItem(item){  // Remover un item del cart por usando su id
+        console.log(item);
+        console.log(item.precio);
+        let lala="PL6rm0ZckHDZNz8tDttF"
+        
+        setCarrito(carrito.filter(product => product.id !== lala));
     }
 
-    function clear(){ // Remover todos los items
-        carrito.splice(0, carrito.length);
+    function clear() { // Remover todos los items
+        setCarrito([]);
     }
 
-    function isInCart(){ //(id) => true|false 
 
-    }
+
 
     return (
-        <contextoGeneral.Provider value={{ nuevoProducto, setNuevoProducto, carrito, setCarrito, addItem, removeItem, clear, isInCart }}>
+        <contextoGeneral.Provider value={{carrito, quantity, setQuantity, setCarrito, addItem, removeItem, clear, isInCart }}>
             {children}
         </contextoGeneral.Provider>
     );

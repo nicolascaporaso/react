@@ -3,20 +3,19 @@ import { Link } from "react-router-dom";
 import { productosHC } from '../data/data';
 import Itemcount from './ItemCount';
 import { useState } from 'react';
-
 import { contextoGeneral } from "../components/cartContext.jsx";
 import { useContext } from 'react';
 
 export default function ProductoDetail({ producto }) {
   const [goCart, setGoCart]= useState(false);
+  const { carrito, addItem,} = useContext(contextoGeneral);
 
-  const onAdd = () => {
+  const onAdd = (contador) => {
     setGoCart(true);
+    addItem(producto, contador);
   }
 
-  const { nuevoProducto, setNuevoProducto } = useContext(contextoGeneral);
 
-  setNuevoProducto(producto);
 
   return (
     <div className='tienda'>

@@ -6,34 +6,33 @@ import { useContext } from 'react';
 
 export default function Itemcount({max, min, onAdd}){
 
-    const { addItem, removeItem, } = useContext(contextoGeneral);
 
-    const [Acumulador, setAcumulador] = useState("0");
+    let [acumulador, setAcumulador] = useState("1");
 
     const Sumar = (num) => {
-        if (Acumulador < num){
-            setAcumulador(parseInt(Acumulador) + 1);
-            addItem();
+        if (acumulador < num){
+
+            setAcumulador(parseInt(acumulador) + 1);
+            console.log("suma" + acumulador);
         }
         else{
-            alert("se alcanzo el numero maximo");
+            alert("alcanzaste el maximo");
         }
-        
     };
     const Restar = (num) => {
-        if (Acumulador > num){
-            setAcumulador(parseInt(Acumulador) - 1);
-            removeItem();
+        if (acumulador > num){
+            setAcumulador(parseInt(acumulador) - 1);
         }
         else{
-            alert("se alcanzo el numero minimo");
+            alert("alcaszaste el minimo");
         }
     };
-
+    
+    
     return(
         <>
         <Container fixed>
-        <h2 className="itemList"  style={{backgroundColor:'gray'}}>{Acumulador}</h2>
+        <h2 className="itemList"  style={{backgroundColor:'gray'}}>{acumulador}</h2>
         </Container>
         <Container fixed>
         <h2 className="itemList" onClick={(e) => Sumar(max)} style={{backgroundColor:'gray'}}>SUMAR</h2>
@@ -41,7 +40,7 @@ export default function Itemcount({max, min, onAdd}){
         <Container fixed>
         <h2 className="itemList" onClick={(e) => Restar(min)} style={{backgroundColor:'gray'}}>RESTAR</h2>
         </Container>
-        <button onClick={() => onAdd()}>Agregar al carrito</button>
+        <button onClick={() => onAdd(acumulador)}>Agregar al carrito</button>
         </>
     )
 }

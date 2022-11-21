@@ -5,7 +5,6 @@ import Item from './item';
 import ItemCarrito from './itemCarrito.jsx';
 
 
-
 export default function Carrito() {
     const { carrito, setCarrito } = useContext(contextoGeneral);
 
@@ -18,13 +17,12 @@ export default function Carrito() {
     }
 
     console.log(carrito);
-    
-
     return (
             <>{carrito.map((item) => (
                 <ItemCarrito key={item.id} item={item}/>
             ))}
             <p> Total ${sumaTotal()}</p>
+            <button onClick={() => setCarrito([])}>vaciar carrito</button>
             </>
     )
 }
