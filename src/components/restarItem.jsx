@@ -5,10 +5,10 @@ import { useContext } from 'react';
 import { contextoGeneral } from "../components/cartContext.jsx";
 
 export default function RestarItem(item) {
-    const {removeItem, } = useContext(contextoGeneral);
+const {removeItem, } = useContext(contextoGeneral);
     return(
         <>
-            <button onClick={() => removeItem(item)}>Remover Item</button>
+            <button onClick={() => removeItem(item.id)}>Remover Item</button>
         </>
     )
 }

@@ -15,7 +15,7 @@ export default function ItemCarrito({ item }) {
             <p className='tienda__grid__card__parrafo'>Precio: ${item.precio}</p>
             <img className='tienda__grid__card__img' src={item.img} alt="Planta acuatica " />
             <div className='link'><Link to={"/item/" + item.id}>ir al item</Link></div>
-            <RestarItem item={item}/>
+            <RestarItem id={item.id}/>
         </div>
     )
 }

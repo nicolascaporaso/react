@@ -11,9 +11,7 @@ export default function Itemcount({max, min, onAdd}){
 
     const Sumar = (num) => {
         if (acumulador < num){
-
             setAcumulador(parseInt(acumulador) + 1);
-            console.log("suma" + acumulador);
         }
         else{
             alert("alcanzaste el maximo");

@@ -1,28 +1,26 @@
 import React from 'react'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { contextoGeneral } from "../components/cartContext.jsx";
-import Item from './item';
 import ItemCarrito from './itemCarrito.jsx';
-
+import {Button,} from "@mui/material";
+import {Link} from 'react-router-dom'
 
 export default function Carrito() {
-    const { carrito, setCarrito } = useContext(contextoGeneral);
-
-    const sumaTotal = () => {
-        let sumaTodo = 0;
-        carrito.forEach(producto => {
-            sumaTodo = sumaTodo + (producto.precio * producto.cantidad);
-        });
-        return sumaTodo;
+    const {carrito, setCarrito} = useContext(contextoGeneral);
+    
+    function totalAPagar(){
+        const totalAPagar= carrito.reduce((acc, item) => acc +  item.precio* item.cantidad , 0 );
+        return totalAPagar;
     }
 
-    console.log(carrito);
     return (
             <>{carrito.map((item) => (
                 <ItemCarrito key={item.id} item={item}/>
             ))}
-            <p> Total ${sumaTotal()}</p>
-            <button onClick={() => setCarrito([])}>vaciar carrito</button>
+            <p>Total: $ {totalAPagar()} </p>
+
+            <Button  onClick={() => setCarrito([])} variant="contained" color="success">vaciar carrito</Button>
+            <Button variant="contained" color="success"><Link to='/checkout'>checkout</Link></Button>
             </>
     )
 }

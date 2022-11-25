@@ -1,21 +1,18 @@
 //@ts-check
-
-import React, { useState, createContext } from "react";
+import React, { useEffect, useState, createContext } from "react";
 
 export const contextoGeneral = createContext();
 
 export default function CartContext({ children }) {
-    const [carrito, setCarrito] = useState([]);
+    const [carrito, setCarrito] = useState(JSON.parse(localStorage.getItem("cart")) || []);
     const [quantity, setQuantity] = useState("0");
-    
-    
+        
     function isInCart(id) { 
         const existInCart = carrito.findIndex((item) => item.id == id);
         return existInCart;
     }
 
     function addItem(item, cantidad) { // agregar cierta cantidad de un ítem al carrito
-        console.log("log de add" + quantity);
         const pos = isInCart(item.id);
         if (pos == -1) {
             setCarrito([...carrito, {...item, cantidad}]);
@@ -26,19 +23,17 @@ export default function CartContext({ children }) {
         }
     }
 
-    function removeItem(item){  // Remover un item del cart por usando su id
-        console.log(item);
-        console.log(item.precio);
-        let lala="PL6rm0ZckHDZNz8tDttF"
-        
-        setCarrito(carrito.filter(product => product.id !== lala));
+    function removeItem(id){  // Remover un item del cart por usando su id
+        setCarrito(carrito.filter(product => product.id !== id));
     }
 
     function clear() { // Remover todos los items
         setCarrito([]);
     }
 
-
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(carrito));
+    }, [carrito])
 
 
     return (

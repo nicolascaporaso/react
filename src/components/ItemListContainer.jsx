@@ -30,7 +30,6 @@ export default function ItemListContainer() {
                 return{ id: item.id, nombre: item.data().nombre, tipo: item.data().tipo, cantidad: item.data().cantidad, precio: item.data().precio, descripcion: item.data().descripcion,
                 }
             });
-        console.log(baseNormalizada);
         setProductos(baseNormalizada);
         });
 

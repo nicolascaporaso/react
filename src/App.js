@@ -10,6 +10,7 @@ import FormHelperText from '@mui/material/FormHelperText'
 import Carrito from './components/Carrito.jsx';
 import Footer from "./components/Footer";
 import ContextContainer from "./components/cartContext.jsx";
+import Checkout from "./components/checkout";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/category/:idcategory" element={<ItemListContainer/>} />
         <Route path="/item/:iditem" element={<ItemDetailContainer/>} />
         <Route path="/carrito" element={<Carrito/>} />
+        <Route path="/checkout" element={<Checkout/>} />
       </Routes>
       <Footer ></Footer>
     </BrowserRouter>
