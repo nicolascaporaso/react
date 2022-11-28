@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { productosHC } from '../data/data';
 import Itemcount from './ItemCount';
 import { useState } from 'react';
 import { contextoGeneral } from "../components/cartContext.jsx";
@@ -26,7 +25,7 @@ export default function ProductoDetail({ producto }) {
           <div className='tienda__grid__card' key={producto.id}>
             <h3 className='tienda__grid__card__titulo'>{producto.nombre} </h3>
             <p className='tienda__grid__card__parrafo'>Precio: ${producto.precio}</p>
-            <img className='tienda__grid__card__img' src={producto.img} alt="Planta acuatica " />
+            <img className='tienda__grid__card__img' src={producto.imagen} alt="Planta acuatica " />
             <h4 className='tienda__grid__card__parrafo'>Descripcion: {producto.descripcion}</h4>
             <p className='tienda__grid__card__parrafo'>Stock: {producto.cantidad}</p>
             <div className='link'><Link to={"/producto/" + producto.id}>Comprar</Link></div>
