@@ -27,14 +27,10 @@ export default function ItemListContainer() {
         getDocs(productos).then((res) => {
         
             const baseNormalizada = res.docs.map( item => {
-                return{ id: item.id, nombre: item.data().nombre, tipo: item.data().tipo, cantidad: item.data().cantidad, precio: item.data().precio, descripcion: item.data().descripcion,
-                }
+                return{ id: item.id, nombre: item.data().nombre, tipo: item.data().tipo, cantidad: item.data().cantidad, precio: item.data().precio, descripcion: item.data().descripcion, imagen: item.data().imagen, }
             });
         setProductos(baseNormalizada);
         });
-
-
-        
 
     }, [idcategory]);
 
