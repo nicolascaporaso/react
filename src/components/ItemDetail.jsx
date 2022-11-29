@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { productosHC } from '../data/data';
 import Itemcount from './ItemCount';
 import { useState } from 'react';
 import { contextoGeneral } from "../components/cartContext.jsx";

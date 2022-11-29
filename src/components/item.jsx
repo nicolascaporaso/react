@@ -9,7 +9,7 @@ export default function Item({ item }) {
             <h3 className='tienda__grid__card__titulo'>{item.nombre} </h3>
             <p className='tienda__grid__card__parrafo'>Precio: ${item.precio}</p>
             <img className='tienda__grid__card__img' src={item.imagen} alt="Planta acuatica " />
-            <div className='link'><Link to={"/item/" + item.id}>ir al item</Link></div>
+            <div className='link'><Link to={"/item/" + item.id}>Mas detalles</Link></div>
         </div>
     )
 }

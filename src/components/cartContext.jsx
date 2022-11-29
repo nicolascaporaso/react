@@ -7,6 +7,19 @@ export default function CartContext({ children }) {
     const [carrito, setCarrito] = useState(JSON.parse(localStorage.getItem("cart")) || []);
     const [quantity, setQuantity] = useState("0");
         
+
+    function actCart() {
+        let contador = 0;
+        if (carrito.length > 0) {
+            carrito.forEach(element => {
+                contador = contador + element.cantidad
+                setQuantity(parseInt(contador));
+            });
+        } else {
+            setQuantity(parseInt("0"));
+        }
+    }
+
     function isInCart(id) { 
         const existInCart = carrito.findIndex((item) => item.id == id);
         return existInCart;
@@ -33,11 +46,12 @@ export default function CartContext({ children }) {
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(carrito));
+        actCart();
     }, [carrito])
 
 
     return (
-        <contextoGeneral.Provider value={{carrito, quantity, setQuantity, setCarrito, addItem, removeItem, clear, isInCart }}>
+        <contextoGeneral.Provider value={{carrito, quantity, actCart, setQuantity, setCarrito, addItem, removeItem, clear, isInCart }}>
             {children}
         </contextoGeneral.Provider>
     );

@@ -4,6 +4,7 @@ import { contextoGeneral } from "../components/cartContext.jsx";
 import ItemCarrito from './itemCarrito.jsx';
 import {Button,} from "@mui/material";
 import {Link} from 'react-router-dom'
+import '../assets/css/carrito.css'
 
 export default function Carrito() {
     const {carrito, setCarrito} = useContext(contextoGeneral);
@@ -17,10 +18,9 @@ export default function Carrito() {
             <>{carrito.map((item) => (
                 <ItemCarrito key={item.id} item={item}/>
             ))}
-            <p>Total: $ {totalAPagar()} </p>
-
+            <p className='parrafo'>Total: $ {totalAPagar()} </p>
             <Button  onClick={() => setCarrito([])} variant="contained" color="success">vaciar carrito</Button>
-            <Button variant="contained" color="success"><Link to='/checkout'>checkout</Link></Button>
+            {carrito.length > 0? <Button variant="contained" color="success"><Link to='/checkout'>Checkout</Link></Button> : <Button disabled>Checkout</Button>}
             </>
     )
 }

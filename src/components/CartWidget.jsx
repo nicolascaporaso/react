@@ -4,17 +4,11 @@ import '../assets/css/CartWidget.css'
 import {Link} from 'react-router-dom'
 import {Button} from "@mui/material";
 import { contextoGeneral } from "../components/cartContext.jsx";
-import { useContext } from 'react';
+import { useContext, } from 'react';
 
 
-const CartWidget = () => {
-  const { quantity, setQuantity, carrito } = useContext(contextoGeneral);
-
-  let contador = 0;
-  carrito.forEach(element => {
-    contador = contador + element.cantidad
-  setQuantity(parseInt(contador));
-  });
+function CartWidget(){
+  const { quantity, carrito} = useContext(contextoGeneral);
 
   return (
     <>
