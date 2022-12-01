@@ -2,7 +2,9 @@ import React from 'react'
 import { useContext, useState } from 'react';
 import { contextoGeneral } from "../components/cartContext.jsx";
 import { Button } from '@mui/material';
-
+import '../assets/css/checkout.css'
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 export default function Checkout() {
     const {carrito, setCarrito} = useContext(contextoGeneral);
@@ -66,18 +68,24 @@ export default function Checkout() {
     }
 
     return (
-        <div>
-            
-            <input placeholder="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-            <input placeholder="tel" value={tel} onChange={(e) => setTel(e.target.value)} />
-            <input placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <Button onClick={(e) => pagar()} >PAGAR</Button>
+        <div className='container'>
+            <h1 className='titulo'>Formulario de Compra</h1>
 
-            
-            {carrito.map((item) => (
-                <p>NOMBRE: {item.nombre} / CANTIDAD: {item.cantidad} / PRECIO-UNIDAD: ${item.precio}</p>
-            ))}
-            <p>Total: $ {totalAPagar()} </p>
+            <div className='checkout'>
+
+
+                <input className='input' placeholder="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                <input className='input' placeholder="tel" value={tel} onChange={(e) => setTel(e.target.value)} />
+                <input className='input' placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+                {carrito.map((item) => (
+                    <p className='item'>NOMBRE: {item.nombre} / CANTIDAD: {item.cantidad} / PRECIO-UNIDAD: ${item.precio}</p>
+                ))}
+                <p>Total: $ {totalAPagar()} </p>
+                <div className='bottom'>
+                    {(tel && email && nombre) ? <Button variant="contained" color="success" onClick={(e) => pagar()} >PAGAR</Button> : <Stack sx={{ width: '100%' }} spacing={2}><Alert severity="error">Complete todos los campos para continuar  </Alert></Stack>}
+                </div>
+            </div>
         </div>
     )
 }
