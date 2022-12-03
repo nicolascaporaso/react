@@ -13,7 +13,8 @@ function CartWidget(){
   return (
     <>
       <Button variant="contained" color="success" >
-        <Link id="NavLink" to="/carrito"><img className='IcoCarrito' src={icono}></img></Link>
+      {(quantity > 0) ? <Link id="NavLink" to="/carrito"><img className='IcoCarrito' src={icono}></img></Link> : <Button disabled><img className='IcoCarrito' src={icono}></img></Button>}
+        
         <div><p>{quantity}</p></div>
       </Button>
     </>

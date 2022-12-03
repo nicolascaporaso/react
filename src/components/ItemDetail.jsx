@@ -28,7 +28,7 @@ export default function ProductoDetail({ producto }) {
             <img className='tienda__grid__card__img' src={producto.imagen} alt="Planta acuatica " />
             <h4 className='tienda__grid__card__parrafo'>Descripcion: {producto.descripcion}</h4>
             <p className='tienda__grid__card__parrafo'>Stock: {producto.cantidad}</p>
-            <div className='link'><Link to={"/producto/" + producto.id}>Comprar</Link></div>
+            
             {goCart? <Link to='/carrito'>Terminar Compra</Link> : <div><Itemcount max={producto.cantidad} min={1} onAdd={onAdd}/></div>}
           </div>
         </div>

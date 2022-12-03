@@ -5,6 +5,9 @@ import { Button } from '@mui/material';
 import '../assets/css/checkout.css'
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Checkout() {
     const {carrito, setCarrito} = useContext(contextoGeneral);
@@ -50,25 +53,42 @@ export default function Checkout() {
         return true;
     }
 
-    function pagar(){
-        if(!tel || !email || !nombre){
+    function alerta(){
+        toast.info('Usted esta comprando, por un total de $'+ totalAPagar() +" "+ carrito.map((item) => (
+            item.nombre + " X" +item.cantidad +" "+ "unidades" +" a "+"$" + item.precio 
+        )),{
+            position: "top-center",
+            autoClose: 8000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
+    }
+
+    function pagar() {
+        if (!tel || !email || !nombre) {
             return
         }
-        if (validateEmail(email) == false){
+        if (validateEmail(email) == false) {
             return
         }
-        if (validateName(nombre) == false){
+        if (validateName(nombre) == false) {
             return
         }
-        if (validateTel(tel) == false){
+        if (validateTel(tel) == false) {
             return
         }
 
-        alert("usted esta comprando" + carrito );
+        alerta()
+
     }
 
     return (
         <div className='container'>
+            <ToastContainer />
             <h1 className='titulo'>Formulario de Compra</h1>
 
             <div className='checkout'>

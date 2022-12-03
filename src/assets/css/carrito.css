@@ -1,3 +1,7 @@
+.size{
+    height: 77vh;
+}
+
 .parrafo{
 margin-left: 10%;
 font-size:larger;
@@ -5,7 +9,7 @@ font-weight: 900;
 }
 
 .inline{
-    display: inline-block;
+    display: inline-block
     }
 
 .carrito__titulo {
@@ -33,18 +37,16 @@ font-weight: 900;
 }
 
 .carrito__grid__card__parrafo {
-    margin-left: 6px;
-    margin-right: 6px;
+    margin-left: 80px;
     padding-bottom: 3px;
+    display: inline-block
 }
 
 .carrito__grid__card__img {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2;
-    border: 2px solid #00060a;
-    margin-bottom: 10px;
-    width: 5%;
+    display: inline-block;
+    border: 2px solid #f3f6f8;
+    width: 15%;
+    margin-left: 2%;
 }
 
 .carrito {
