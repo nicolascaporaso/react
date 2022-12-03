@@ -60,7 +60,7 @@
 }
 
 .tienda__grid__card__img {
-    display: block;
+    display:inline-block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20;
