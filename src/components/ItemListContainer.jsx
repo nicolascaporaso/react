@@ -9,31 +9,31 @@ import Item from "./item.jsx";
 export default function ItemListContainer() {
 
     const { idcategory } = useParams();
-    const [productos, setProductos] = useState([]);
+    const [products, setProducts] = useState([]);
     
     useEffect(() => {
-        let productos;
-        const baseDatos = getFirestore();
+        let products;
+        const database = getFirestore();
         
         if (idcategory) {
-            productos = query(collection (baseDatos, 'plantas'), where('tipo', '==', idcategory));
+            products = query(collection (database, 'plantas'), where('type', '==', idcategory));
         } else {
-            productos = collection (baseDatos, 'plantas');
+            products = collection (database, 'plantas');
         }
         
         
 
-        getDocs(productos).then((res) => {
+        getDocs(products).then((res) => {
         
-            const baseNormalizada = res.docs.map( item => {
-                return{ id: item.id, nombre: item.data().nombre, tipo: item.data().tipo, cantidad: item.data().cantidad, precio: item.data().precio, descripcion: item.data().descripcion, imagen: item.data().imagen, }
+            const databaseNorm = res.docs.map( item => {
+                return{ id: item.id, name: item.data().name, type: item.data().type, amount: item.data().amount, price: item.data().price, description: item.data().description, image: item.data().image, }
             });
-        setProductos(baseNormalizada);
+        setProducts(databaseNorm);
         });
 
     }, [idcategory]);
 
     return (
-        <ItemList productos={productos} />
+        <ItemList products={products} />
     );
 }

@@ -2,10 +2,10 @@ import React from 'react'
 import Container from '@mui/material/Container'
 import { useState } from 'react';
 import { useContext } from 'react';
-import { contextoGeneral } from "../components/cartContext.jsx";
+import { contextGeneral } from "../components/cartContext.jsx";
 
-export default function RestarItem(item) {
-const {removeItem, } = useContext(contextoGeneral);
+export default function SusbtractItem(item) {
+const {removeItem, } = useContext(contextGeneral);
     return(
         <>
             <button onClick={() => removeItem(item.id)}>Remover Item</button>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext, useState } from 'react';
-import { contextoGeneral } from "../components/cartContext.jsx";
+import { contextGeneral } from "../components/cartContext.jsx";
 import { Button } from '@mui/material';
 import '../assets/css/checkout.css'
 import Alert from '@mui/material/Alert';
@@ -10,14 +10,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Checkout() {
-    const {carrito, setCarrito} = useContext(contextoGeneral);
+    const {shoppingCart, setShoppingCart} = useContext(contextGeneral);
     const [tel, setTel] = useState("");
     const [email, setEmail] = useState("");
-    const [nombre, setNombre] = useState("");
+    const [name, setName] = useState("");
 
-    function totalAPagar(){
-        const totalAPagar= carrito.reduce((acc, item) => acc +  item.precio* item.cantidad , 0 );
-        return totalAPagar;
+    function totalToPay(){
+        const totalToPay= shoppingCart.reduce((acc, item) => acc +  item.price* item.amount , 0 );
+        return totalToPay;
     }
 
     function validateEmail(email){
@@ -31,10 +31,10 @@ export default function Checkout() {
         return true;
     }
 
-    function validateName(nombre){
-        var nombreReg = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
+    function validateName(name){
+        var nameReg = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
 
-        if (nombreReg.test(nombre)==false){
+        if (nameReg.test(name)==false){
             alert("nombre invalido");
             return false;
         }
@@ -53,9 +53,9 @@ export default function Checkout() {
         return true;
     }
 
-    function alerta(){
-        toast.info('Usted esta comprando, por un total de $'+ totalAPagar() +" "+ carrito.map((item) => (
-            item.nombre + " X" +item.cantidad +" "+ "unidades" +" a "+"$" + item.precio 
+    function alertMsg(){
+        toast.info('Usted esta comprando, por un total de $'+ totalToPay() +" "+ shoppingCart.map((item) => (
+            item.name + " X" +item.amount +" "+ "unidades" +" a "+"$" + item.price 
         )),{
             position: "top-center",
             autoClose: 8000,
@@ -68,21 +68,21 @@ export default function Checkout() {
             });
     }
 
-    function pagar() {
-        if (!tel || !email || !nombre) {
+    function pay() {
+        if (!tel || !email || !name) {
             return
         }
         if (validateEmail(email) == false) {
             return
         }
-        if (validateName(nombre) == false) {
+        if (validateName(name) == false) {
             return
         }
         if (validateTel(tel) == false) {
             return
         }
 
-        alerta()
+        alertMsg()
 
     }
 
@@ -94,16 +94,16 @@ export default function Checkout() {
             <div className='checkout'>
 
 
-                <input className='input' placeholder="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                <input className='input' placeholder="nombre" value={name} onChange={(e) => setName(e.target.value)} />
                 <input className='input' placeholder="tel" value={tel} onChange={(e) => setTel(e.target.value)} />
                 <input className='input' placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
 
-                {carrito.map((item) => (
-                    <p className='item'>NOMBRE: {item.nombre} / CANTIDAD: {item.cantidad} / PRECIO-UNIDAD: ${item.precio}</p>
+                {shoppingCart.map((item) => (
+                    <p className='item'>NOMBRE: {item.name} / CANTIDAD: {item.amount} / PRECIO-UNIDAD: ${item.price}</p>
                 ))}
-                <p>Total: $ {totalAPagar()} </p>
+                <p>Total: $ {totalToPay()} </p>
                 <div className='bottom'>
-                    {(tel && email && nombre) ? <Button variant="contained" color="success" onClick={(e) => pagar()} >PAGAR</Button> : <Stack sx={{ width: '100%' }} spacing={2}><Alert severity="error">Complete todos los campos para continuar  </Alert></Stack>}
+                    {(tel && email && name) ? <Button variant="contained" color="success" onClick={(e) => pay()} >PAGAR</Button> : <Stack sx={{ width: '100%' }} spacing={2}><Alert severity="error">Complete todos los campos para continuar  </Alert></Stack>}
                 </div>
             </div>
         </div>

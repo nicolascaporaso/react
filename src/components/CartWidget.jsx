@@ -3,12 +3,12 @@ import icono from '../assets/img/carrito.svg'
 import '../assets/css/CartWidget.css'
 import {Link} from 'react-router-dom'
 import {Button} from "@mui/material";
-import { contextoGeneral } from "../components/cartContext.jsx";
+import { contextGeneral } from "../components/cartContext.jsx";
 import { useContext, } from 'react';
 
 
 function CartWidget(){
-  const { quantity, carrito} = useContext(contextoGeneral);
+  const { quantity, shoppingCart} = useContext(contextGeneral);
 
   return (
     <>

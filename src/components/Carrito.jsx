@@ -1,27 +1,27 @@
 import React from 'react'
 import { useContext, useState } from 'react';
-import { contextoGeneral } from "../components/cartContext.jsx";
-import ItemCarrito from './itemCarrito.jsx';
+import { contextGeneral } from "../components/cartContext.jsx";
+import ItemCarrito from './itemCart.jsx';
 import {Button, Box} from "@mui/material";
 import {Link} from 'react-router-dom'
-import '../assets/css/carrito.css'
+import '../assets/css/cart.css'
 
 export default function Carrito() {
-    const {carrito, setCarrito} = useContext(contextoGeneral);
+    const {shoppingCart, setShoppingCart} = useContext(contextGeneral);
     
-    function totalAPagar(){
-        const totalAPagar= carrito.reduce((acc, item) => acc +  item.precio* item.cantidad , 0 );
-        return totalAPagar;
+    function totalToPay(){
+        const totalToPay= shoppingCart.reduce((acc, item) => acc +  item.price* item.amount , 0 );
+        return totalToPay;
     }
 
     return (
-            <div className='size'>{carrito.map((item) => (
+            <div className='size'>{shoppingCart.map((item) => (
                 <ItemCarrito key={item.id} item={item}/>
             ))}
-            <p className='parrafo'>Total: $ {totalAPagar()} </p>
+            <p className='parrafo'>Total: $ {totalToPay()} </p>
             <Box textAlign='center'>
-            <Button  onClick={() => setCarrito([])} variant="contained" color="success">vaciar carrito</Button>
-            {carrito.length > 0? <Button variant="contained" color="success"><Link to='/checkout'>Checkout</Link></Button> : <Button disabled>Checkout</Button>}
+            <Button  onClick={() => setShoppingCart([])} variant="contained" color="success">vaciar carrito</Button>
+            {shoppingCart.length > 0? <Button variant="contained" color="success"><Link to='/checkout'>Checkout</Link></Button> : <Button disabled>Checkout</Button>}
             </Box>
             </div>
     )

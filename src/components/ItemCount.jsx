@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Itemcount({max, min, onAdd}){
 
 
-    let [acumulador, setAcumulador] = useState("1");
+    let [acc, setAcc] = useState("1");
 
     function mesage(text){
         toast.info(text, {
@@ -25,17 +25,17 @@ export default function Itemcount({max, min, onAdd}){
         });
     }
 
-    const Sumar = (num) => {
-        if (acumulador < num){
-            setAcumulador(parseInt(acumulador) + 1);
+    const Add = (num) => {
+        if (acc < num){
+            setAcc(parseInt(acc) + 1);
         }
         else{
             mesage("alcanzaste el maximo");
         }
     };
-    const Restar = (num) => {
-        if (acumulador > num){
-            setAcumulador(parseInt(acumulador) - 1);
+    const Subtract = (num) => {
+        if (acc > num){
+            setAcc(parseInt(acc) - 1);
         }
         else{
             mesage("alcaszaste el minimo");
@@ -46,15 +46,15 @@ export default function Itemcount({max, min, onAdd}){
     return(
         <>
         <Container fixed>
-        <h2 className="parrafo"  style={{backgroundColor:'gray'}}>{acumulador}</h2>
+        <h2 className="parrafo"  style={{backgroundColor:'gray'}}>{acc}</h2>
         </Container>
         <Container fixed>
-        <h2 className="parrafo" onClick={(e) => Sumar(max)} style={{backgroundColor:'gray'}}>SUMAR PLANTA</h2>
+        <h2 className="parrafo" onClick={(e) => Add(max)} style={{backgroundColor:'gray'}}>SUMAR PLANTA</h2>
         </Container>
         <Container fixed>
-        <h2 className="parrafo" onClick={(e) => Restar(min)} style={{backgroundColor:'gray'}}>RESTAR PLANTA</h2>
+        <h2 className="parrafo" onClick={(e) => Subtract(min)} style={{backgroundColor:'gray'}}>RESTAR PLANTA</h2>
         </Container>
-        <div className='boton'><button onClick={() => onAdd(acumulador)}>Agregar al carrito</button></div>
+        <div className='boton'><button onClick={() => onAdd(acc)}>Agregar al carrito</button></div>
         <ToastContainer/>
         </>
     )

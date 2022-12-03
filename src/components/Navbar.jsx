@@ -36,7 +36,7 @@ export default function Navbar() {
                     <Typography
                         mt={4}
                         ml={2}
-                        variant="h3"
+                        variant="h4"
                         noWrap
                         component="a"
                         sx={{

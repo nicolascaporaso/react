@@ -7,19 +7,19 @@ import Item from "./item.jsx";
 
 export default function ItemDetailContainer() {
     const { iditem } = useParams();
-    const [producto, setProducto] = useState({});
+    const [product, setProduct] = useState({});
 
     useEffect(() => {
-        const baseDatos = getFirestore();
-        const item = doc(baseDatos, 'plantas', iditem);
+        const database = getFirestore();
+        const item = doc(database, 'plantas', iditem);
         getDoc(item).then((res) => {
             const docNorm = {...res.data(), id: res.id};
-            setProducto(docNorm);
+            setProduct(docNorm);
         });
 
     }, [iditem]);
 
     return (
-        <ItemDetail producto={producto} />
+        <ItemDetail product={product} />
     );
 }
