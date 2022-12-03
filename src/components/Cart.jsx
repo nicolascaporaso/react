@@ -1,10 +1,9 @@
-import React from 'react'
-import { useContext, useState } from 'react';
+import { Box, Button } from "@mui/material";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import '../assets/css/cart.css';
 import { contextGeneral } from "../components/cartContext.jsx";
 import ItemCarrito from './itemCart.jsx';
-import {Button, Box} from "@mui/material";
-import {Link} from 'react-router-dom'
-import '../assets/css/cart.css'
 
 export default function Carrito() {
     const {shoppingCart, setShoppingCart} = useContext(contextGeneral);

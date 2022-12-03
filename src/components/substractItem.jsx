@@ -1,8 +1,5 @@
-import React from 'react'
-import Container from '@mui/material/Container'
-import { useState } from 'react';
-import { useContext } from 'react';
-import { contextGeneral } from "../components/cartContext.jsx";
+import React, { useContext } from 'react';
+import { contextGeneral } from "./cartContext.jsx";
 
 export default function SusbtractItem(item) {
 const {removeItem, } = useContext(contextGeneral);

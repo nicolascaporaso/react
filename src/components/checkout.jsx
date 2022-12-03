@@ -1,12 +1,11 @@
-import React from 'react'
-import { useContext, useState } from 'react';
-import { contextGeneral } from "../components/cartContext.jsx";
 import { Button } from '@mui/material';
-import '../assets/css/checkout.css'
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-import { ToastContainer, toast } from 'react-toastify';
+import React, { useContext, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../assets/css/checkout.css';
+import { contextGeneral } from "../components/cartContext.jsx";
 
 
 export default function Checkout() {

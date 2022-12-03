@@ -1,11 +1,8 @@
-import React from 'react'
-import Container from '@mui/material/Container'
-import { useState } from 'react';
-import { contextoGeneral } from "../components/cartContext.jsx";
-import { useContext } from 'react';
-import '../assets/css/count.css'
-import { ToastContainer, toast } from 'react-toastify';
+import Container from '@mui/material/Container';
+import React, { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../assets/css/count.css';
 
 export default function Itemcount({max, min, onAdd}){
 

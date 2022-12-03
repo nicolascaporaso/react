@@ -1,16 +1,13 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import "./App.css";
-import Navbar from './components/Navbar';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import ItemListContainer from "./components/ItemListContainer";
-import ItemDetailContainer from "./components/ItemDetailContainer";
-import FormControl from '@mui/material/FormControl'
-import FormLabel from '@mui/material/FormLabel'
-import FormHelperText from '@mui/material/FormHelperText'
-import Carrito from './components/Carrito.jsx';
-import Footer from "./components/Footer";
+import Carrito from './components/Cart.jsx';
 import ContextContainer from "./components/cartContext.jsx";
 import Checkout from "./components/checkout";
+import Footer from "./components/Footer";
+import ItemDetailContainer from "./components/ItemDetailContainer";
+import ItemListContainer from "./components/ItemListContainer";
+import Navbar from './components/Navbar';
 
 export default function App() {
   return (

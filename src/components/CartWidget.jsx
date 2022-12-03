@@ -1,10 +1,9 @@
-import React from 'react'
-import icono from '../assets/img/carrito.svg'
-import '../assets/css/CartWidget.css'
-import {Link} from 'react-router-dom'
-import {Button} from "@mui/material";
+import { Button } from "@mui/material";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import '../assets/css/CartWidget.css';
+import icono from '../assets/img/carrito.svg';
 import { contextGeneral } from "../components/cartContext.jsx";
-import { useContext, } from 'react';
 
 
 function CartWidget(){

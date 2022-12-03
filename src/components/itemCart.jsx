@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { Link } from "react-router-dom";
-import '../assets/css/cart.css'
-import Button from '@mui/material/Button'
-import Itemcount from './ItemCount';
-import { contextoGeneral } from "./cartContext.jsx";
-import { useContext } from 'react';
-import RestarItem from './restarItem';
+import '../assets/css/cart.css';
+import RestarItem from './substractItem';
 
 
 export default function ItemCarrito({ item }) {

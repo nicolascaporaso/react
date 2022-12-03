@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { Link } from "react-router-dom";
-import '../assets/css/itemListContainer.css'
+import '../assets/css/itemListContainer.css';
 
 export default function Item({ item }) {
 

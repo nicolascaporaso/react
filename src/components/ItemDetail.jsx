@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
-import Itemcount from './ItemCount';
-import { useState } from 'react';
 import { contextGeneral } from "../components/cartContext.jsx";
-import { useContext } from 'react';
+import Itemcount from './ItemCount';
 
 export default function ProductoDetail({product}) {
   const [goCart, setGoCart]= useState(false);

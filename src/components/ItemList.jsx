@@ -1,6 +1,5 @@
-import React from 'react'
-import { Link } from "react-router-dom";
-import '../assets/css/itemListContainer.css'
+import React from 'react';
+import '../assets/css/itemListContainer.css';
 import Item from './item';
 
 
