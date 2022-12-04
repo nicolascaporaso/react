@@ -44,10 +44,10 @@ export default function Navbar() {
                         PLANTASACUATICAS.COM.AR
                     </Typography>
                 </Box>
-                <Button size="small" variant="contained" color="success"><Link to="/category/fondo">Fondo</Link></Button>
-                <Button size="small" variant="contained" color="success"><Link to="/category/flote">Flote</Link></Button>
-                <Button size="small" variant="contained" color="success"><Link to="/category/palustre">Palustre</Link></Button>
-                <Button sx={{mr: 1}} size="small" variant="contained" color="success"><Link to="/category/piedra">Piedra</Link></Button>
+                <Button size="small" variant="contained" color="success"><Link to="/category/fondo" style={{color:"white", textDecoration: 'none' }} >Fondo</Link></Button>
+                <Button size="small" variant="contained" color="success"><Link to="/category/flote" style={{color:"white", textDecoration: 'none' }} >Flote</Link></Button>
+                <Button size="small" variant="contained" color="success"><Link to="/category/palustre" style={{color:"white", textDecoration: 'none' }} >Palustre</Link></Button>
+                <Button sx={{mr: 1}} size="small" variant="contained" color="success"><Link to="/category/piedra" style={{color:"white", textDecoration: 'none' }} >Piedra</Link></Button>
                 <CartWidget/>
             </Box>
         </AppBar>
