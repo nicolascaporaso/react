@@ -1,28 +1,41 @@
-import React from 'react'
-import Container from '@mui/material/Container'
-import { useState } from 'react';
-import { contextoGeneral } from "../components/cartContext.jsx";
-import { useContext } from 'react';
+import Container from '@mui/material/Container';
+import React, { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../assets/css/count.css';
 
 export default function Itemcount({max, min, onAdd}){
 
 
-    let [acumulador, setAcumulador] = useState("1");
+    let [acc, setAcc] = useState("1");
 
-    const Sumar = (num) => {
-        if (acumulador < num){
-            setAcumulador(parseInt(acumulador) + 1);
+    function mesage(text){
+        toast.info(text, {
+            position: "bottom-center",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
+    }
+
+    const Add = (num) => {
+        if (acc < num){
+            setAcc(parseInt(acc) + 1);
         }
         else{
-            alert("alcanzaste el maximo");
+            mesage("alcanzaste el maximo");
         }
     };
-    const Restar = (num) => {
-        if (acumulador > num){
-            setAcumulador(parseInt(acumulador) - 1);
+    const Subtract = (num) => {
+        if (acc > num){
+            setAcc(parseInt(acc) - 1);
         }
         else{
-            alert("alcaszaste el minimo");
+            mesage("alcaszaste el minimo");
         }
     };
     
@@ -30,15 +43,16 @@ export default function Itemcount({max, min, onAdd}){
     return(
         <>
         <Container fixed>
-        <h2 className="itemList"  style={{backgroundColor:'gray'}}>{acumulador}</h2>
+        <h2 className="parrafo"  style={{backgroundColor:'gray'}}>{acc}</h2>
         </Container>
         <Container fixed>
-        <h2 className="itemList" onClick={(e) => Sumar(max)} style={{backgroundColor:'gray'}}>SUMAR</h2>
+        <h2 className="parrafo" onClick={(e) => Add(max)} style={{backgroundColor:'gray'}}>SUMAR PLANTA</h2>
         </Container>
         <Container fixed>
-        <h2 className="itemList" onClick={(e) => Restar(min)} style={{backgroundColor:'gray'}}>RESTAR</h2>
+        <h2 className="parrafo" onClick={(e) => Subtract(min)} style={{backgroundColor:'gray'}}>RESTAR PLANTA</h2>
         </Container>
-        <button onClick={() => onAdd(acumulador)}>Agregar al carrito</button>
+        <div className='boton'><button onClick={() => onAdd(acc)}>Agregar al carrito</button></div>
+        <ToastContainer/>
         </>
     )
 }

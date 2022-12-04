@@ -1,19 +1,16 @@
-import React from 'react'
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
+import { contextGeneral } from "../components/cartContext.jsx";
 import Itemcount from './ItemCount';
-import { useState } from 'react';
-import { contextoGeneral } from "../components/cartContext.jsx";
-import { useContext } from 'react';
 
-export default function ProductoDetail({ producto }) {
+export default function ProductoDetail({product}) {
   const [goCart, setGoCart]= useState(false);
-  const { carrito, addItem,} = useContext(contextoGeneral);
+  const { shoppingCart, addItem,} = useContext(contextGeneral);
 
-  const onAdd = (contador) => {
+  const onAdd = (counter) => {
     setGoCart(true);
-    addItem(producto, contador);
+    addItem(product, counter);
   }
-
 
 
   return (
@@ -21,15 +18,15 @@ export default function ProductoDetail({ producto }) {
       <h2 className='tienda__titulo'>Descripcion detallada del producto.</h2>
       <div>
         <div className="tienda__grid">
-          {!producto.id && "Loading..."}
-          <div className='tienda__grid__card' key={producto.id}>
-            <h3 className='tienda__grid__card__titulo'>{producto.nombre} </h3>
-            <p className='tienda__grid__card__parrafo'>Precio: ${producto.precio}</p>
-            <img className='tienda__grid__card__img' src={producto.imagen} alt="Planta acuatica " />
-            <h4 className='tienda__grid__card__parrafo'>Descripcion: {producto.descripcion}</h4>
-            <p className='tienda__grid__card__parrafo'>Stock: {producto.cantidad}</p>
-            <div className='link'><Link to={"/producto/" + producto.id}>Comprar</Link></div>
-            {goCart? <Link to='/carrito'>Terminar Compra</Link> : <div><Itemcount max={producto.cantidad} min={1} onAdd={onAdd}/></div>}
+          {!product.id && "Loading..."}
+          <div className='tienda__grid__card' key={product.id}>
+            <h3 className='tienda__grid__card__titulo'>{product.name} </h3>
+            <p className='tienda__grid__card__parrafo'>Precio: ${product.price}</p>
+            <img className='tienda__grid__card__img' src={product.image} alt="Planta acuatica " />
+            <h4 className='tienda__grid__card__parrafo'>Descripcion: {product.description}</h4>
+            <p className='tienda__grid__card__parrafo'>Stock: {product.amount}</p>
+            
+            {goCart? <Link to='/carrito'>Terminar Compra</Link> : <div><Itemcount max={product.amount} min={1} onAdd={onAdd}/></div>}
           </div>
         </div>
       </div> 

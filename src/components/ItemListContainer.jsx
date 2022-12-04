@@ -1,39 +1,37 @@
 //@ts-check
-import React from "react";
-import { useState, useEffect } from "react";
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
-import {getFirestore, collection, getDocs, query, where} from 'firebase/firestore'
-import Item from "./item.jsx";
 
 export default function ItemListContainer() {
 
     const { idcategory } = useParams();
-    const [productos, setProductos] = useState([]);
+    const [products, setProducts] = useState([]);
     
     useEffect(() => {
-        let productos;
-        const baseDatos = getFirestore();
+        let products;
+        const database = getFirestore();
         
         if (idcategory) {
-            productos = query(collection (baseDatos, 'plantas'), where('tipo', '==', idcategory));
+            products = query(collection (database, 'plantas'), where('type', '==', idcategory));
         } else {
-            productos = collection (baseDatos, 'plantas');
+            products = collection (database, 'plantas');
         }
         
         
 
-        getDocs(productos).then((res) => {
+        getDocs(products).then((res) => {
         
-            const baseNormalizada = res.docs.map( item => {
-                return{ id: item.id, nombre: item.data().nombre, tipo: item.data().tipo, cantidad: item.data().cantidad, precio: item.data().precio, descripcion: item.data().descripcion, imagen: item.data().imagen, }
+            const databaseNorm = res.docs.map( item => {
+                return{ id: item.id, name: item.data().name, type: item.data().type, amount: item.data().amount, price: item.data().price, description: item.data().description, image: item.data().image, }
             });
-        setProductos(baseNormalizada);
+        setProducts(databaseNorm);
         });
 
     }, [idcategory]);
 
     return (
-        <ItemList productos={productos} />
+        <ItemList products={products} />
     );
 }

@@ -10,7 +10,6 @@
 
 # production
 /build
-/src/components/nousados/
 
 # misc
 .DS_Store

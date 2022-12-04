@@ -1,19 +1,18 @@
 //@ts-check
 import React, { useEffect, useState, createContext } from "react";
 
-export const contextoGeneral = createContext();
+export const contextGeneral = createContext();
 
 export default function CartContext({ children }) {
-    const [carrito, setCarrito] = useState(JSON.parse(localStorage.getItem("cart")) || []);
+    const [shoppingCart, setShoppingCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
     const [quantity, setQuantity] = useState("0");
         
-
     function actCart() {
-        let contador = 0;
-        if (carrito.length > 0) {
-            carrito.forEach(element => {
-                contador = contador + element.cantidad
-                setQuantity(parseInt(contador));
+        let counter = 0;
+        if (shoppingCart.length > 0) {
+            shoppingCart.forEach(element => {
+                counter = counter + element.amount
+                setQuantity(parseInt(counter));
             });
         } else {
             setQuantity(parseInt("0"));
@@ -21,38 +20,38 @@ export default function CartContext({ children }) {
     }
 
     function isInCart(id) { 
-        const existInCart = carrito.findIndex((item) => item.id == id);
+        const existInCart = shoppingCart.findIndex((item) => item.id == id);
         return existInCart;
     }
 
-    function addItem(item, cantidad) { // agregar cierta cantidad de un ítem al carrito
+    function addItem(item, amount) { // agregar cierta amount de un ítem al carrito
         const pos = isInCart(item.id);
         if (pos == -1) {
-            setCarrito([...carrito, {...item, cantidad}]);
+            setShoppingCart([...shoppingCart, {...item, amount}]);
         } else {
-            const carritoAux = [...carrito];
-            carritoAux[pos] = { ...carritoAux[pos], cantidad: carritoAux[pos].cantidad + cantidad };
-            setCarrito(carritoAux);
+            const shoppingCartAux = [...shoppingCart];
+            shoppingCartAux[pos] = { ...shoppingCartAux[pos], amount: shoppingCartAux[pos].amount + amount };
+            setShoppingCart(shoppingCartAux);
         }
     }
 
     function removeItem(id){  // Remover un item del cart por usando su id
-        setCarrito(carrito.filter(product => product.id !== id));
+        setShoppingCart(shoppingCart.filter(product => product.id !== id));
     }
 
     function clear() { // Remover todos los items
-        setCarrito([]);
+        setShoppingCart([]);
     }
 
     useEffect(() => {
-        localStorage.setItem("cart", JSON.stringify(carrito));
+        localStorage.setItem("cart", JSON.stringify(shoppingCart));
         actCart();
-    }, [carrito])
+    }, [shoppingCart])
 
 
     return (
-        <contextoGeneral.Provider value={{carrito, quantity, actCart, setQuantity, setCarrito, addItem, removeItem, clear, isInCart }}>
+        <contextGeneral.Provider value={{shoppingCart, quantity, actCart, setQuantity, setShoppingCart, addItem, removeItem, clear, isInCart }}>
             {children}
-        </contextoGeneral.Provider>
+        </contextGeneral.Provider>
     );
 }

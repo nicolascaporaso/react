@@ -20,6 +20,7 @@
         flex-flow: wrap;
         align-items: center;
         justify-items: center;
+        justify-content: center
     }
 }
 
@@ -59,15 +60,6 @@
     padding-bottom: 30px;
 }
 
-.tienda__grid__card__img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20;
-    border: 2px solid #00060a;
-    margin-bottom: 50px;
-}
-
 .tienda {
     width: 98%;
     margin-left: auto;
@@ -82,4 +74,14 @@
     padding: 5px;
     background-color: rgb(204, 211, 208);
     text-align: center;
+}
+
+.tienda__grid__card__img {
+    width: 30%;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #00060a;
+    margin-top: 1px ;
+    margin-bottom: 10px;
 }
