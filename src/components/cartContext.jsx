@@ -20,13 +20,13 @@ export default function CartContext({ children }) {
     }
 
     function isInCart(id) { 
-        const existInCart = shoppingCart.findIndex((item) => item.id == id);
+        const existInCart = shoppingCart.findIndex((item) => item.id === id);
         return existInCart;
     }
 
     function addItem(item, amount) { // agregar cierta amount de un ítem al carrito
         const pos = isInCart(item.id);
-        if (pos == -1) {
+        if (pos === -1) {
             setShoppingCart([...shoppingCart, {...item, amount}]);
         } else {
             const shoppingCartAux = [...shoppingCart];

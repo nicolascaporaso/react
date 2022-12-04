@@ -6,7 +6,7 @@ import logo from '../assets/img/logo.svg';
 const Logo = () => {
     return (
         <>
-            <Link id="NavLink" to="/"><img className='Logo' src={logo}></img></Link>
+            <Link id="NavLink" to="/"><img alt="imagen del carrito de compras" className='Logo' src={logo}></img></Link>
         </>
     )
 }

@@ -7,13 +7,13 @@ import { contextGeneral } from "../components/cartContext.jsx";
 
 
 function CartWidget(){
-  const { quantity, shoppingCart} = useContext(contextGeneral);
+  const { quantity,} = useContext(contextGeneral);
 
   return (
     <>
       <Button size="small" variant="contained" color="success" >
       <p>{quantity}</p>
-      {(quantity > 0) ? <Link id="NavLink" to="/carrito"><img className='IcoCarrito' src={icono}></img></Link> : <Link id="NavLink" to=""><img className='IcoCarrito' src={icono}></img></Link>}
+      {(quantity > 0) ? <Link id="NavLink" to="/carrito"><img alt="imagen de carrito de compras" className='IcoCarrito' src={icono}></img></Link> : <Link id="NavLink" to=""><img alt="imagen de carrito de compras" className='IcoCarrito' src={icono}></img></Link>}
       </Button>
     </>
   )

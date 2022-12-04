@@ -8,13 +8,6 @@ import '../assets/css/navbar.css';
 import CartWidget from "./CartWidget";
 import Logo from "./Logo";
 
-const pages = [
-    { label: "Home", link: "/" },
-    { label: "Checkout", link: "/checkout" },
-    { label: "Contacto", link: "/contacto" },
-    { label: "deportes", link: "/category/deportes" },
-    { label: "fiesta", link: "/category/fiesta" },
-];
 
 export default function Navbar() {
     return (

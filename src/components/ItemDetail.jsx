@@ -5,7 +5,7 @@ import Itemcount from './ItemCount';
 
 export default function ProductoDetail({product}) {
   const [goCart, setGoCart]= useState(false);
-  const { shoppingCart, addItem,} = useContext(contextGeneral);
+  const {addItem,} = useContext(contextGeneral);
 
   const onAdd = (counter) => {
     setGoCart(true);
@@ -21,8 +21,8 @@ export default function ProductoDetail({product}) {
           {!product.id && "Loading..."}
           <div className='tienda__grid__card' key={product.id}>
             <h3 className='tienda__grid__card__titulo'>{product.name} </h3>
+            <img alt="imagen de planta acuatica" className='tienda__grid__card__img' src={product.image} />
             <p className='tienda__grid__card__parrafo'>Precio: ${product.price}</p>
-            <img className='tienda__grid__card__img' src={product.image} alt="Planta acuatica " />
             <h4 className='tienda__grid__card__parrafo'>Descripcion: {product.description}</h4>
             <p className='tienda__grid__card__parrafo'>Stock: {product.amount}</p>
             
