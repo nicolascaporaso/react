@@ -12,7 +12,6 @@ export default function ProductoDetail({product}) {
     addItem(product, counter);
   }
 
-console.log(product);
 
   return (
     <div className='tienda'>

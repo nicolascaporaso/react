@@ -20,6 +20,7 @@
         flex-flow: wrap;
         align-items: center;
         justify-items: center;
+        justify-content: center
     }
 }
 
