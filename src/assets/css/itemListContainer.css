@@ -72,8 +72,10 @@
 
 .link{
     padding: 5px;
-    background-color: rgb(204, 211, 208);
+    background-color: rgba(204, 211, 208, 0.349);
     text-align: center;
+    text-decoration: none;
+    display: block;
 }
 
 .tienda__grid__card__img {
