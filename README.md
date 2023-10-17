@@ -11,7 +11,7 @@
 
 
 
-# [Plantasacuaticas.com.ar v2.0](https://plantasacuaticas.com.ar)
+# [Plantasacuaticas.com.ar v2.0](https://nicolascaporaso-backend-51380.onrender.com/auth/login)
 
 
 **plantasacuaticas.com.ar** es la reciente version actualizada del E-comerce, de un proyecto mas ambisioso, no se trata solo de una app de ventas online, sino de un sitio completo sobre plantas acuaticas, donde hay informacion detallada sobre las mismas, junto con guias y cursos para todos los amantes de la acuarofilia. podes visitar el sitio en su version 1.9 en (**https://plantasacuaticas.netlify.app/**). La migracion se realiza de forma modular, hacia el framework [REACT](https://es.reactjs.org/), logrando una programacion basada en componentes, ayudando a crear interfaces de usuario interactivas de forma sencilla. con vistas simples para cada estado en la aplicación, se encarga de actualizar y renderizar de manera eficiente los componentes correctos cuando los datos cambien. Ademas cuenta con la capacidad de instalar librerias y dependecias que extienden las capacidades del software y facilitan el desarrollo evitando la duplicacion de codigo y aprovechando el ya resuelto por otro programador.
